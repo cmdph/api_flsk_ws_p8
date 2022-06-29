@@ -40,22 +40,11 @@ def dice_coeff(y_true, y_pred):
     score = (2. * intersection + smooth) / (tf.reduce_sum(y_true_f) + tf.reduce_sum(y_pred_f) + smooth)
     return score
 
-#model = tf.keras.models.load_model('bestModel_Unet_sansAug.h5',
-            #custom_objects={'dice_loss': dice_loss ,'iou_score': iou_score, 'mean_IoU': meanIOU, 'dice_coeff': dice_coeff})
+model = tf.keras.models.load_model('bestModel_Unet_sansAug.h5',
+            custom_objects={'dice_loss': dice_loss ,'iou_score': iou_score, 'mean_IoU': meanIOU, 'dice_coeff': dice_coeff})
 
-#model = tf.keras.models.load_model('bestModel_Unet_sansAug33.h5',
-                    #custom_objects={'focal_loss_plus_jaccard_loss': sm.losses.categorical_focal_jaccard_loss,
-                                     #'iou_score': sm.metrics.iou_score})  
-                                     # 
-                                     #  
- #model = tf.keras.models.load_model('unet.h5',
-                     #custom_objects={'focal_loss_plus_jaccard_loss': sm.losses.categorical_focal_jaccard_loss,
-                                     #'iou_score': sm.metrics.iou_score})   
 
-                                   
-
-                                
-
+                
 @app.route("/", methods=['GET'])
 def index():
     # afficher le formulaire
